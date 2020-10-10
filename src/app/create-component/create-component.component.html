@@ -1,6 +1,6 @@
-<div class="flex h-full w-full py-8 md:py-6 px-3 md:px-0">
+<div class="flex h-full w-full px-3 md:px-0">
   <div
-    class="flex flex-col h-full w-full lg:w-5/12 md:w-3/5 mx-auto my-auto rounded-t-md shadow-lg bg-white"
+    class="flex flex-col h-auto w-full lg:w-5/12 md:w-3/5 mx-auto my-auto rounded-lg shadow-lg bg-white"
   >
     <div
       class="flex flex-row justify-between h-16 w-full px-4 border-b border-gray-300"
@@ -28,59 +28,127 @@
         </svg>
       </span>
     </div>
-    <div class="flex relative flex-col h-full w-full py-6 px-3 md:px-8">
-      <div
-        class="absolute bottom-0 right-0 h-16 w-16 md:h-20 md:w-20 bg-indigo-400 rounded-tl-full"
-      ></div>
-
-      <div
-        class="absolute bottom-0 left-0 h-16 w-16 md:h-20 md:w-20 bg-indigo-400 rounded-tr-full"
-      ></div>
-
+    <div class="flex relative flex-col h-full w-full py-10 px-4 md:px-10">
       <div class="h-auto w-auto mb-4">
         <input
           type="text"
           id="name"
-          class="font__medium fields__shadow p-3 h-12 w-full rounded-md appearance-none leading-tight text-gray-800 border border-gray-500 focus:outline-none focus:border-blue-600 focus:bg-gray-100"
+          [(ngModel)]="formValue.name"
+          (ngModelChange)="formChecker()"
+          [ngClass]="
+            currentElem === 'name' && formValue.name === ''
+              ? 'font__medium fields__shadow p-3 h-12 w-full rounded-md appearance-none leading-tight text-gray-800 border border-gray-500 focus:outline-none focus:border-red-500'
+              : 'font__medium fields__shadow p-3 h-12 w-full rounded-md appearance-none leading-tight text-gray-800 border border-gray-500 focus:outline-none focus:border-green-500 focus:bg-gray-100'
+          "
           autocomplete="off"
           placeholder="What's your first name"
+          (focus)="getProps($event)"
+          (blur)="getProps('')"
+          (change)="formChecker()"
         />
+        <small
+          [ngClass]="
+            currentElem === 'name' && formValue.name === '' ? '' : 'hidden'
+          "
+          class="font__regular text-red-600"
+          >Your first name is required</small
+        >
       </div>
+
       <div class="h-auto w-auto mb-4">
         <input
           type="text"
           id="surname"
-          class="font__medium fields__shadow p-3 h-12 w-full rounded-md appearance-none leading-tight text-gray-800 border border-gray-500 focus:outline-none focus:border-blue-600 focus:bg-gray-100"
+          [(ngModel)]="formValue.surname"
+          (ngModelChange)="formChecker()"
+          [ngClass]="
+            currentElem === 'surname' && formValue.surname === ''
+              ? 'font__medium fields__shadow p-3 h-12 w-full rounded-md appearance-none leading-tight text-gray-800 border border-gray-500 focus:outline-none focus:border-red-500'
+              : 'font__medium fields__shadow p-3 h-12 w-full rounded-md appearance-none leading-tight text-gray-800 border border-gray-500 focus:outline-none focus:border-green-500 focus:bg-gray-100'
+          "
           autocomplete="off"
           placeholder="What's your last name"
+          (focus)="getProps($event)"
+          (blur)="getProps('')"
+          (change)="formChecker()"
         />
+        <small
+          [ngClass]="
+            currentElem === 'surname' && formValue.surname === ''
+              ? ''
+              : 'hidden'
+          "
+          class="font__regular text-red-600"
+          >Your last name is required</small
+        >
       </div>
-      <div class="h-auto w-auto mb-3">
+
+      <div class="h-auto w-auto mb-4">
         <input
           type="text"
-          id="username"
-          class="font__medium fields__shadow p-3 h-12 w-full rounded-md appearance-none leading-tight text-gray-800 border border-gray-500 focus:outline-none focus:border-blue-600 focus:bg-gray-100"
+          id="create_username"
+          [(ngModel)]="formValue.username"
+          (ngModelChange)="formChecker()"
+          [ngClass]="
+            currentElem === 'create_username' && getValueLength('username') < 7
+              ? 'font__medium fields__shadow p-3 h-12 w-full rounded-md appearance-none leading-tight text-gray-800 border border-gray-500 focus:outline-none focus:border-red-500'
+              : 'font__medium fields__shadow p-3 h-12 w-full rounded-md appearance-none leading-tight text-gray-800 border border-gray-500 focus:outline-none focus:border-green-500 focus:bg-gray-100'
+          "
           autocomplete="off"
           placeholder="Create your username"
+          (focus)="getProps($event)"
+          (blur)="getProps('')"
+          (change)="formChecker()"
         />
-        <small class="font__regular text-gray-700"
+        <small
+          [ngClass]="
+            currentElem === 'create_username' && getValueLength('username') < 7
+              ? ''
+              : 'hidden'
+          "
+          class="font__regular text-red-600"
           >Must contain at least 7 characters</small
         >
       </div>
+
       <div class="h-auto w-auto mb-4">
         <input
           type="password"
-          id="password"
-          class="font__medium fields__shadow p-3 h-12 w-full rounded-md appearance-none leading-tight text-gray-800 border border-gray-500 focus:outline-none focus:border-blue-600 focus:bg-gray-100"
+          id="create_password"
+          [(ngModel)]="formValue.password"
+          (ngModelChange)="formChecker()"
+          [ngClass]="
+            currentElem === 'create_password' && getValueLength('password') < 10
+              ? 'font__medium fields__shadow p-3 h-12 w-full rounded-md appearance-none leading-tight text-gray-800 border border-gray-500 focus:outline-none focus:border-red-500'
+              : 'font__medium fields__shadow p-3 h-12 w-full rounded-md appearance-none leading-tight text-gray-800 border border-gray-500 focus:outline-none focus:border-green-500 focus:bg-gray-100'
+          "
           autocomplete="off"
           placeholder="Create your password"
+          (focus)="getProps($event)"
+          (blur)="getProps('')"
         />
-        <small class="font__regular text-gray-700"
-          >Must contain at least 8 characters</small
+        <small
+          [ngClass]="
+            currentElem === 'create_password' && getValueLength('password') < 10
+              ? ''
+              : 'hidden'
+          "
+          class="font__regular text-red-600"
+          >Must contain at least 10 characters</small
         >
       </div>
+
+      <div
+        *ngIf="!isValid"
+        class="liner font__regular text-red-600 mt-4 mx-auto"
+      >
+        <span class="mx-2 text-sm">fill in the fields</span>
+      </div>
+
       <button
-        class="eina__medium h-12 w-6/12 md:w-5/12 lg:w-5/12 mt-8 p-2 mx-auto cursor-pointer text-white rounded-full transition duration-300 bg-green-500 hover:bg-green-400 hover:shadow-md focus:outline-none"
+        (click)="register()"
+        *ngIf="isValid"
+        class="able eina__medium h-12 w-full md:w-6/12 lg:w-6/12 mt-4 mb-2 p-2 mx-auto cursor-pointer text-white rounded-full transition duration-300 bg-green-500 hover:bg-green-400 hover:shadow-md focus:outline-none"
       >
         Create
       </button>
