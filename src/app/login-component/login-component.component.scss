@@ -1,0 +1,14 @@
+.fields__shadow {
+  box-shadow: inset 0px 1px 3px 0px #eeeeee;
+}
+
+.or__text:after,
+.or__text:before {
+  content: "\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0";
+  text-decoration: line-through;
+  color: #dee4ec !important;
+}
+
+.fit__content {
+  height: fit-content;
+}

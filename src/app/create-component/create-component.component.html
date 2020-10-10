@@ -1,0 +1,89 @@
+<div class="flex h-full w-full py-8 md:py-6 px-3 md:px-0">
+  <div
+    class="flex flex-col h-full w-full lg:w-5/12 md:w-3/5 mx-auto my-auto rounded-t-md shadow-lg bg-white"
+  >
+    <div
+      class="flex flex-row justify-between h-16 w-full px-4 border-b border-gray-300"
+    >
+      <h1 class="eina__medium my-auto text-xl md:text-2xl text-indigo-600">
+        Create Account
+      </h1>
+
+      <span
+        (click)="closeCreateComponent()"
+        class="p-1 h-10 my-auto fill-current text-gray-800 cursor-pointer rounded-md transition duration-150 ease-in-out hover:bg-gray-300"
+      >
+        <svg
+          class="h-8 w-8"
+          stroke="currentColor"
+          viewBox="0 0 24 24"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            strokeWidth="2"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            d="M6 18L18 6M6 6l12 12"
+          />
+        </svg>
+      </span>
+    </div>
+    <div class="flex relative flex-col h-full w-full py-6 px-3 md:px-8">
+      <div
+        class="absolute bottom-0 right-0 h-16 w-16 md:h-20 md:w-20 bg-indigo-400 rounded-tl-full"
+      ></div>
+
+      <div
+        class="absolute bottom-0 left-0 h-16 w-16 md:h-20 md:w-20 bg-indigo-400 rounded-tr-full"
+      ></div>
+
+      <div class="h-auto w-auto mb-4">
+        <input
+          type="text"
+          id="name"
+          class="font__medium fields__shadow p-3 h-12 w-full rounded-md appearance-none leading-tight text-gray-800 border border-gray-500 focus:outline-none focus:border-blue-600 focus:bg-gray-100"
+          autocomplete="off"
+          placeholder="What's your first name"
+        />
+      </div>
+      <div class="h-auto w-auto mb-4">
+        <input
+          type="text"
+          id="surname"
+          class="font__medium fields__shadow p-3 h-12 w-full rounded-md appearance-none leading-tight text-gray-800 border border-gray-500 focus:outline-none focus:border-blue-600 focus:bg-gray-100"
+          autocomplete="off"
+          placeholder="What's your last name"
+        />
+      </div>
+      <div class="h-auto w-auto mb-3">
+        <input
+          type="text"
+          id="username"
+          class="font__medium fields__shadow p-3 h-12 w-full rounded-md appearance-none leading-tight text-gray-800 border border-gray-500 focus:outline-none focus:border-blue-600 focus:bg-gray-100"
+          autocomplete="off"
+          placeholder="Create your username"
+        />
+        <small class="font__regular text-gray-700"
+          >Must contain at least 7 characters</small
+        >
+      </div>
+      <div class="h-auto w-auto mb-4">
+        <input
+          type="password"
+          id="password"
+          class="font__medium fields__shadow p-3 h-12 w-full rounded-md appearance-none leading-tight text-gray-800 border border-gray-500 focus:outline-none focus:border-blue-600 focus:bg-gray-100"
+          autocomplete="off"
+          placeholder="Create your password"
+        />
+        <small class="font__regular text-gray-700"
+          >Must contain at least 8 characters</small
+        >
+      </div>
+      <button
+        class="eina__medium h-12 w-6/12 md:w-5/12 lg:w-5/12 mt-8 p-2 mx-auto cursor-pointer text-white rounded-full transition duration-300 bg-green-500 hover:bg-green-400 hover:shadow-md focus:outline-none"
+      >
+        Create
+      </button>
+    </div>
+  </div>
+</div>
