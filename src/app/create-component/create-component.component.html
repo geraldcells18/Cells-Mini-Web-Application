@@ -33,10 +33,10 @@
         <input
           type="text"
           id="name"
-          [(ngModel)]="formValue.name"
+          [(ngModel)]="formValue.firstName"
           (ngModelChange)="formChecker()"
           [ngClass]="
-            currentElem === 'name' && formValue.name === ''
+            currentElem === 'name' && formValue.firstName === ''
               ? 'font__medium fields__shadow p-3 h-12 w-full rounded-md appearance-none leading-tight text-gray-800 border border-gray-500 focus:outline-none focus:border-red-500'
               : 'font__medium fields__shadow p-3 h-12 w-full rounded-md appearance-none leading-tight text-gray-800 border border-gray-500 focus:outline-none focus:border-green-500 focus:bg-gray-100'
           "
@@ -48,7 +48,7 @@
         />
         <small
           [ngClass]="
-            currentElem === 'name' && formValue.name === '' ? '' : 'hidden'
+            currentElem === 'name' && formValue.firstName === '' ? '' : 'hidden'
           "
           class="font__regular text-red-600"
           >Your first name is required</small
@@ -59,10 +59,10 @@
         <input
           type="text"
           id="surname"
-          [(ngModel)]="formValue.surname"
+          [(ngModel)]="formValue.lastName"
           (ngModelChange)="formChecker()"
           [ngClass]="
-            currentElem === 'surname' && formValue.surname === ''
+            currentElem === 'surname' && formValue.lastName === ''
               ? 'font__medium fields__shadow p-3 h-12 w-full rounded-md appearance-none leading-tight text-gray-800 border border-gray-500 focus:outline-none focus:border-red-500'
               : 'font__medium fields__shadow p-3 h-12 w-full rounded-md appearance-none leading-tight text-gray-800 border border-gray-500 focus:outline-none focus:border-green-500 focus:bg-gray-100'
           "
@@ -74,7 +74,7 @@
         />
         <small
           [ngClass]="
-            currentElem === 'surname' && formValue.surname === ''
+            currentElem === 'surname' && formValue.lastName === ''
               ? ''
               : 'hidden'
           "

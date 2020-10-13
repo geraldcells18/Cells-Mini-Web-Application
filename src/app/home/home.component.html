@@ -1,0 +1,23 @@
+<div class="flex flex-col h-full w-full px-3 md:px-0 bg-gray-100">
+  <div
+    class="w-full md:w-4/5 shadow-md rounded-md mx-auto my-auto py-12 px-4 sm:px-6 lg:py-16 lg:px-8 lg:flex lg:items-center lg:justify-between bg-white"
+  >
+    <h2
+      class="font__bold text-3xl leading-9 font-extrabold tracking-tight text-gray-900 sm:text-4xl sm:leading-10"
+    >
+      Hi {{ currentUser.firstName + " " + currentUser.lastName }},
+      <br />
+      <span class="text-indigo-600"
+        >This is a simple home page for demonstration.</span
+      >
+    </h2>
+    <div class="mt-8 flex lg:mt-0">
+      <button
+        (click)="logoutUser()"
+        class="font__medium h-10 w-32 mt-6 text-white bg-red-600 cursor-pointer transition duration-300 hover:shadow-md focus:outline-none rounded-full"
+      >
+        Logout
+      </button>
+    </div>
+  </div>
+</div>

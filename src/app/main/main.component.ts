@@ -1,5 +1,6 @@
-import { MainServiceService } from '../services/main.service';
+import { MainService } from '../services/main.service';
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-main',
@@ -7,11 +8,15 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./main.component.scss'],
 })
 export class MainComponent implements OnInit {
-  constructor(private mainService: MainServiceService) {}
+  constructor(private mainService: MainService, private router: Router) { }
 
   public isShowCreateComponent(): boolean {
     return this.mainService.showCreateAccount;
   }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    if (this.mainService.getLoginSession() !== null) {
+      this.router.navigate(['/home']);
+    }
+  }
 }

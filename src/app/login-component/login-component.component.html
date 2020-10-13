@@ -6,6 +6,7 @@
   <div class="flex flex-col h-auto w-full my-3 md:my-5">
     <div class="h-auto w-auto mb-3">
       <input
+        [(ngModel)]="credentials.username"
         type="text"
         id="username"
         class="font__medium fields__shadow p-3 h-10 md:h-12 w-full rounded-md appearance-none leading-tight bg-gray-100 text-gray-800 border border-gray-400 focus:outline-none focus:border-blue-600"
@@ -16,6 +17,7 @@
 
     <div class="w-auto h-auto">
       <input
+        [(ngModel)]="credentials.password"
         type="password"
         id="password"
         class="font__medium fields__shadow p-3 h-10 md:h-12 w-full rounded-md appearance-none leading-tight bg-gray-100 text-gray-800 border border-gray-400 focus:outline-none focus:border-blue-600"
@@ -26,6 +28,7 @@
 
     <div class="flex flex-col h-auto w-full mt-4">
       <button
+        (click)="login()"
         class="eina__bold h-12 w-full p-2 cursor-pointer text-lg text-white rounded-md transition duration-300 bg-indigo-600 hover:bg-indigo-500 hover:shadow-md focus:outline-none"
       >
         Log In
@@ -44,3 +47,9 @@
     </div>
   </div>
 </div>
+<app-modal
+  [title]="'Invalid Account'"
+  [message]="'Make it sure your username and password is correct.'"
+  [isShow]="isError"
+  (closeClick)="closeDialog($event)"
+></app-modal>

@@ -1,4 +1,4 @@
-import { MainServiceService } from './../services/main.service';
+import { MainService } from './../services/main.service';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -9,17 +9,16 @@ import { Component, OnInit } from '@angular/core';
 export class SuccessComponentComponent implements OnInit {
   public GIF = '../../assets/images/finish.gif';
 
-  constructor(private mainService: MainServiceService) {}
+  constructor(private mainService: MainService) {}
 
   ngOnInit(): void {
     setTimeout(() => {
       this.GIF = '../../assets/images/finish_loop.gif';
     }, 1500);
+    this.mainService.clearSuccessSession();
   }
 
   public homeRedirect(): void {
-    this.mainService.clearSuccessSession();
     window.location.reload();
   }
-
 }

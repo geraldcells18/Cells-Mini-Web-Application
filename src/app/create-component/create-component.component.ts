@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { MainServiceService } from '../services/main.service';
+import { MainService } from '../services/main.service';
 
 @Component({
   selector: 'app-create-component',
@@ -10,17 +10,14 @@ import { MainServiceService } from '../services/main.service';
 export class CreateComponentComponent implements OnInit {
   public currentElem = '';
   public formValue = {
-    name: '',
-    surname: '',
+    firstName: '',
+    lastName: '',
     username: '',
     password: '',
   };
   public isValid = false;
 
-  constructor(
-    private mainService: MainServiceService,
-    private router: Router
-  ) {}
+  constructor(private mainService: MainService, private router: Router) {}
 
   ngOnInit(): void {}
 
@@ -36,8 +33,8 @@ export class CreateComponentComponent implements OnInit {
   // Validator will trigger every time the model change.
   public formChecker(): void {
     this.isValid =
-      this.formValue.name !== '' &&
-      this.formValue.surname !== '' &&
+      this.formValue.firstName !== '' &&
+      this.formValue.lastName !== '' &&
       this.getValueLength('username') >= 7 &&
       this.getValueLength('password') >= 10;
   }
@@ -46,8 +43,13 @@ export class CreateComponentComponent implements OnInit {
     return this.formValue[id].length;
   }
 
-  public register(): void {
-    this.mainService.setSuccessSession();
-    this.router.navigate(['/success']);
+  public async register(): Promise<void> {
+    const result =
+      (await this.mainService.createUser(this.formValue).toPromise()) || null;
+    if (result !== null) {
+      this.mainService.setSuccessSession();
+      this.mainService.setLoginSession(JSON.stringify(result));
+      this.router.navigate(['/success']);
+    }
   }
 }
